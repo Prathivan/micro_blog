@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/index.css">
+    <title>Panda Blog</title>
+
+</head>
+<body>
+    <header>
+     <div class="nav_brand">  <img src="../static/image/pandalogo.png" alt="panda logo">
+    </div>
+    <div id="heading">
+        <h1>Panda Blog</h1>
+    </div>
+    <ul class="navbar__navigation">
+        <li class="navbar_navigation_item"><a href="#">Recent</a></li>
+        <li class="navbar_navigation_item"><a href="#" id="cal">calander</a></li>
+    </ul>
+
+    </header>
+
+    <main>
+        <section class="content_text">
+            <h1>Add a new Entry 🤓</h1>
+             <form class="form" method="POST"> <!-- change method in post and reload same page so we remove action because action not req reload same page -->
+                <p>
+                    <label for="entry" class="form_label"> Entry Content : </label> <br>
+                    <textarea  name="content" id="entry" class="form_textarea"></textarea>
+                </p>
+                <span><button type="submit" class="form_submit"> Add entry</button></span>
+            </form>
+        </section>
+
+        <section class="content_text">
+            <h1>Recent Post : </h1>
+
+            {% for entry in entries %}
+
+                <article class="entry">
+                    <div>
+                        <h3>{{entry[0] | truncate(10,True)}}  <span style="color: grey;font-size:1rem;"><time datetime="{{entry[1]}}">• {{entry[2]}}</time></span></h3>
+                        
+                    </div>
+                    <p>{{entry[0]}}</p>
+                </article>
+
+            {% endfor %}
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer_content">
+            <div class="left">
+                <a href="https://www.linkedin.com/in/prathirunavukkarasu/" class="footer_item" target="_blank"> Made by Prathivan Thirunvukkarasu</a><br>
+                <a href="https://github.com/Prathivan?tab=repositories" class="footer_item" target="_blank">check out my other projects </a>
+            </div>            
+            <div class="footer_column">
+                    <a href="index.html" class="footer_item">Recent</a> <br>
+                    <a href="#" class="footer_item">calander</a>
+            </div>
+            <div class="footer_column">
+                    <a href="#" class="footer_item">about</a> <br>
+                    <a href="#" class="footer_item">How this was made</a>
+            </div>         
+        </div>
+    </footer>
+</body>
+</html>
